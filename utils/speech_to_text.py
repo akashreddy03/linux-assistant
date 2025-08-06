@@ -5,7 +5,13 @@ import numpy as np
 import torch
 
 # Load Whisper model and send it to GPU
-model = whisper.load_model("base").to("cuda")
+#model = whisper.load_model("base").to("cuda")
+
+import torch
+
+device = "cuda" if torch.cuda.is_available() else "cpu"
+model = whisper.load_model("base").to(device)
+
 
 # Audio config
 RATE = 16000
